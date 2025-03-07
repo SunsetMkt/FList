@@ -106,5 +106,13 @@ export default defineUserConfig({
       }),
       downProxy: cloudflarePagesDownProxy(),
     },
+    {
+      mountPath: "/Microsoft-Activation-Scripts",
+      analysis: githubReposAnalysis({
+        user: "massgravel",
+        repository: "Microsoft-Activation-Scripts",
+      }),
+      downProxy: cloudflarePagesDownProxy(),
+    },
   ])
 })
