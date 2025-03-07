@@ -28,63 +28,50 @@ export default defineUserConfig({
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   // 页面预加载，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
   // 简单来说就是，如果你的文件不多就可以打开这个选项，可以大大提高页面切换的速度，如果文件非常多就不建议打开。建议超过100个文件就不要打开这个选项。
-  shouldPrefetch: true,
+  shouldPrefetch: false,
   // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
   theme: FileList([
     {
       // 挂载路径
-      mountPath: "/KnapsackToGo4下载",
+      mountPath: "/clash-verge-rev",
       // 文件解析器，这里使用githubReleasesFilesAnalysis,可以解析github的release文件
       analysis: githubReleasesFilesAnalysis({
         // 仓库所有者的用户名
-        user: "jianjianai",
+        user: "clash-verge-rev",
         // 仓库所有者的仓库名
-        repository: "KnapsackToGo4"
+        repository: "clash-verge-rev"
       }),
-    },
-    {
-      mountPath: "/",
-      analysis: githubReleasesFilesAnalysis({ user: "jianjianai", repository: "FList" }),
       // 下载代理配置,支持多个平台，参考:https://jjaw.cn/2024/8/3/flist-config-porxy/
       // 这个是为了解决github的国内下载慢的问题，和跨域问题，建议配置，不然pdf，txt，md等文件因为跨域无法预览
       // 如果你使用的不是 cloudflare Pages 部署需要删掉这一行，因为如果不是cloudflare Pages部署，这个代理是无法正常工作的
       downProxy: cloudflarePagesDownProxy(),
     },
     {
-      mountPath: "/",
-      // 这里使用 fileUrlTreeAnalysis 文件放到对应的文件路径中
-      analysis: fileUrlTreeAnalysis({
-        "/test2/文件树-测试视频1.mp4": "https://github.com/jianjianai/FList/releases/download/root/test.video.2.1080p.webm",
-        "/文件树测试/文件树-测试视频1.mp4": "https://github.com/jianjianai/FList/releases/download/root/test.video.2.1080p.webm",
-        "/文件树-测试视频1.mp4": "https://github.com/jianjianai/FList/releases/download/root/test.video.2.1080p.webm"
+      // 挂载路径
+      mountPath: "/ClashMetaForAndroid",
+      // 文件解析器，这里使用githubReleasesFilesAnalysis,可以解析github的release文件
+      analysis: githubReleasesFilesAnalysis({
+        // 仓库所有者的用户名
+        user: "MetaCubeX",
+        // 仓库所有者的仓库名
+        repository: "ClashMetaForAndroid"
       }),
-      downProxy: cloudflarePagesDownProxy(),//如果文件树地址下载比较慢，也可以配置代理
+      // 下载代理配置,支持多个平台，参考:https://jjaw.cn/2024/8/3/flist-config-porxy/
+      // 这个是为了解决github的国内下载慢的问题，和跨域问题，建议配置，不然pdf，txt，md等文件因为跨域无法预览
+      // 如果你使用的不是 cloudflare Pages 部署需要删掉这一行，因为如果不是cloudflare Pages部署，这个代理是无法正常工作的
+      downProxy: cloudflarePagesDownProxy(),
     },
     {
-      mountPath: "/huggingface测试",
+      mountPath: "/huggingface-documentation-images",
       analysis: huggingFaceDatasetsAnalysis({
-        userName: "Open-Orca",
-        datasetsName: "OpenOrca",
+        userName: "huggingface",
+        datasetsName: "documentation-images",
         branchName: "main",
         path: "/",
         //最大深度,如果文件夹有很多层最大递归解析多少层，默认10
-        maxDeep: 3
+        maxDeep: 10
       }),
-    },
-    {
-      mountPath: "/gitee测试/发行版",
-      analysis: giteeReleasesFilesAnalysis({
-        user: "jja8",
-        repository: "flist-test",
-        direction: "desc"
-      })
-    },
-    {
-      mountPath: "/gitee测试/仓库",
-      analysis: giteeReposAnalysis({
-        user: "jja8",
-        repository: "flist-test"
-      }),
+      downProxy: cloudflarePagesDownProxy(),
     },
     {
       mountPath: "/ProgrammingVTuberLogos",
@@ -92,8 +79,15 @@ export default defineUserConfig({
         user: "Aikoyori",
         repository: "ProgrammingVTuberLogos",
       }),
-      downProxy: cloudflarePagesDownProxy()
+      downProxy: cloudflarePagesDownProxy(),
     },
-    // ... 可以配置多个挂载路径和仓库，以此类推
+    {
+      mountPath: "/KawaiiLogos",
+      analysis: githubReposAnalysis({
+        user: "SAWARATSUKI",
+        repository: "KawaiiLogos",
+      }),
+      downProxy: cloudflarePagesDownProxy(),
+    },
   ])
 })
